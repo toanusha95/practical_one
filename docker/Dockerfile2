@@ -1,0 +1,8 @@
+FROM ubuntu
+MIANTAINER "anusha"
+LABEL "this is just trail"
+RUN sudo apt update // sudo apt install apache2 -y
+ENTRYPOINT ["echo"]
+CMD ["helloworld"]
+EXPOSE 8080
+

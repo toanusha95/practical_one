@@ -1,0 +1,5 @@
+FROM centos:7
+LABEL "anusha"
+RUN sudo apt update // sudo apt install httpd -y
+ENV name anusha
+CMD ["echo","hello, $name"]
