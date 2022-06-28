@@ -1,0 +1,43 @@
+- name: install tomcat
+  hosts: ubuntu
+  become: yes
+  tasks: 
+    - name: install java
+      apt:
+       name: openjdk-11-jdk
+       update_cache: yes
+       state: present
+    - name: download tomcat
+      get_url:
+       url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.63/bin/apache-tomcat-9.0.63.tar.gz
+       dest: /usr/local/
+    - name: untar tomcat
+      unarchive:
+        src: /usr/local/apache-tomcat-9.0.63.tar.gz
+        dest: /usr/local
+        remote_src: yes
+    - name: change file permissions
+      file:
+        path: /usr/local/apache-tomcat-9.0.63/
+        owner: ansible
+        group: ansible
+        recurse: yes
+        mode: '1777'
+    - name: copy conf file
+      template: 
+        src: /home/ansible/playbooks/tomcat-users.xml
+        dest: /usr/local/apache-tomcat-9.0.63/conf/tomcat-users.xml
+    - name: copy file
+      template: 
+        src: /home/ansible/playbooks/context.xml
+        dest: /usr/local/apache-tomcat-9.0.63/webapps/manager/META-INF/context.xml
+
+    - name : copy file1
+      template: 
+        src: /home/ansible/playbooks/context.xml
+        dest: /usr/local/apache-tomcat-9.0.63/webapps/host-manager/META-INF/context.xml
+
+
+    - name: start services
+      shell: nohup /usr/local/apache-tomcat-9.0.63/bin/startup.sh
+
