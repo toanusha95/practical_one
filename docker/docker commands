@@ -1,0 +1,13 @@
+## docker commands:
+FROM
+MAINTAINER
+LABEL
+RUN
+ADD
+COPY
+ENTRYPOINT
+CMD
+USER
+EXPOSE
+ENV
+## These are the main commands
