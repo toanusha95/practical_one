@@ -1,0 +1,9 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: create files
+      file:
+        path: /home/ansible/one.txt
+        owner: ansible
+        group: ansible
+        mode: "777"
