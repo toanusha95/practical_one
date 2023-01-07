@@ -1,0 +1,10 @@
+--- 
+- hosts: all
+  become: yes
+  tasks:
+    - name: create file1
+      file:
+        path: one.txt
+        status: touch
+        mode: '0755'
+  
