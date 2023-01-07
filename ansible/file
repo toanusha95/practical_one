@@ -1,8 +1,0 @@
-- hosts: localhost
-  become: true
-  tasks:
-    - name: create files
-      file:
-        path: /home/ansible/one.txt
-        state: touch
-        mode: "777"
