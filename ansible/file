@@ -4,6 +4,5 @@
     - name: create files
       file:
         path: /home/ansible/one.txt
-        owner: ansible
-        group: ansible
+        state: touch
         mode: "777"
